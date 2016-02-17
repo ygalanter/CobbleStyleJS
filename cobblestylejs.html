@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body style="padding:0;margin:0">
+
+    <script type="text/javascript">
+
+        function getURLVariable(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)",
+                regex = new RegExp(regexS),
+                results = regex.exec(window.location.href);
+            if (results == null) return "";
+            else return results[1];
+        }
+
+        if (getURLVariable('config') == 'true') {
+            var json_string = getURLVariable('json');
+            if (json_string != '') opener.save_config(json_string);
+            window.close();
+        }
+
+
+    </script>
+
+
+    <canvas id="pebble" class="rocky" width="144" height="168">Loading... please wait</canvas>
+
+    <!--Config button-->
+    <img src="resources/images/configure.png" style="cursor:pointer" onclick="open_config();" />
+
+    <!--Splash Screen-->
+    <script type="text/javascript">
+        var canvas = document.getElementById("pebble");
+        var ctx = canvas.getContext("2d");
+
+        ctx.font = "26px verdana";
+        ctx.textAlign = "center";
+        ctx.fillText("Loading...", 72, 90);
+        ctx.strokeRect(5, 5, 134, 158);
+    </script>
+
+    <script type="text/javascript" src="html-binding.js"></script>
+    <script type="text/javascript" src="symbols-manual.js"></script>
+    <script type="text/javascript" src="symbols-generated.js"></script>
+    <script type="text/javascript" src="transpiled.js"></script>
+    <script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="battery.min.js"></script>
+
+    <script type="text/javascript" src="cobblestylejs_h.js"></script>
+    <script type="text/javascript" src="cobblestylejs_c.js"></script>
+
+
+</body>
+</html>
